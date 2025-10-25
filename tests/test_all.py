@@ -11,9 +11,9 @@ import os
 # Add src directory to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from storage import ConceptStorage
-from email_template import EmailTemplate
-from ai_generator import AIConceptGenerator
+from src.storage import ConceptStorage
+from src.email_template import EmailTemplate
+from src.ai_generator import AIConceptGenerator
 
 
 class TestConceptStorage(unittest.TestCase):
