@@ -28,6 +28,10 @@ class TestConceptStorage(unittest.TestCase):
         """Clean up test files"""
         if os.path.exists(self.test_file):
             os.remove(self.test_file)
+        # Clean up test data directory if created
+        test_dir = os.path.dirname(self.test_file)
+        if test_dir and os.path.exists(test_dir) and not os.listdir(test_dir):
+            os.rmdir(test_dir)
     
     def test_add_and_load_concepts(self):
         """Test adding and loading concepts"""
@@ -79,11 +83,12 @@ This is a test concept with **bold text**.
     
     def test_format_content(self):
         """Test content formatting"""
-        content = "**Bold text** and regular text"
+        content = "This is **bold text** and regular text"
         formatted = EmailTemplate._format_content(content)
         
         self.assertIn("<strong>", formatted)
         self.assertIn("</strong>", formatted)
+        self.assertIn("bold text", formatted)
 
 
 class TestAIConceptGenerator(unittest.TestCase):
