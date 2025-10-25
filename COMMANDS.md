@@ -1,5 +1,7 @@
 # 🎯 AI Insight Daily - Complete Command Reference
 
+Command cheat sheet curated by Moussaab Boutelis.
+
 ## 📋 ALL COMMANDS YOU'LL NEED
 
 Copy-paste these commands in order for complete setup.

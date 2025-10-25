@@ -1,5 +1,7 @@
 # 🎯 PROJECT SUMMARY: AI Insight Daily
 
+**Project created and maintained by Moussaab Boutelis.**
+
 ## ✅ What You Have Now
 
 A complete, production-ready automated email system that:

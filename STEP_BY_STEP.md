@@ -2,6 +2,8 @@
 
 This is your complete walkthrough to get AI Insight Daily running. Follow each step carefully!
 
+Guide prepared by Moussaab Boutelis, creator of AI Insight Daily.
+
 ---
 
 ## ⏱️ Time Required: 15-20 Minutes

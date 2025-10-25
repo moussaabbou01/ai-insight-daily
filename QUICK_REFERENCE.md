@@ -1,5 +1,7 @@
 # 🎯 Quick Reference - AI Insight Daily
 
+Compiled by Moussaab Boutelis.
+
 ## 🚀 Common Commands
 
 ### Local Development

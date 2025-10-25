@@ -2,6 +2,8 @@
 
 An automated daily AI learning system that sends beautiful HTML emails with 5 new AI concepts every day, avoiding duplicates and tracking learning progress.
 
+Created and maintained by Moussaab Boutelis.
+
 ![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![GitHub Actions](https://img.shields.io/badge/Automated-GitHub%20Actions-purple.svg)
@@ -268,6 +270,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
+- Moussaab Boutelis for creating and maintaining AI Insight Daily
 - [Perplexity AI](https://www.perplexity.ai/) for the amazing AI API
 - [GitHub Actions](https://github.com/features/actions) for free automation
 - All contributors who help improve this project

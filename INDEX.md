@@ -2,6 +2,8 @@
 
 Welcome to AI Insight Daily! This index helps you find the right documentation for your needs.
 
+Documentation curated by Moussaab Boutelis.
+
 ---
 
 ## 🚀 Getting Started (Choose Your Path)

@@ -2,6 +2,8 @@
 
 This guide will walk you through setting up the AI Insight Daily project on GitHub with automated daily emails.
 
+Guide authored by Moussaab Boutelis, creator of AI Insight Daily.
+
 ## 🎯 Overview
 
 By the end of this guide, you'll have:
