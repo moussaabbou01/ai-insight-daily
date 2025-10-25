@@ -69,5 +69,4 @@ venv.bak/
 Thumbs.db
 
 # Project specific
-data/sent_concepts.json
 *.log
