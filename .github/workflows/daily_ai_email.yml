@@ -34,12 +34,13 @@ jobs:
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         run: |
-          cd src
-          python main.py
+          python src/main.py
       
       - name: Commit updated concepts list
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/sent_concepts.json || true
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 Update sent concepts list [skip ci]" && git push) || true
+          if [ -f data/sent_concepts.json ]; then
+            git add data/sent_concepts.json
+            git diff --quiet && git diff --staged --quiet || (git commit -m "📝 Update sent concepts list [skip ci]" && git push)
+          fi
