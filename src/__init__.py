@@ -6,7 +6,7 @@ avoiding duplicates and presenting information in beautiful HTML format.
 """
 
 __version__ = "1.0.0"
-__author__ = "Your Name"
+__author__ = "Moussaab Boutelis"
 
 from .config import config
 from .storage import ConceptStorage
