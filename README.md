@@ -279,6 +279,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Questions or suggestions? Open an issue or reach out!
 
+- Connect on LinkedIn: https://www.linkedin.com/in/boutelis-moussaab/
+
 ---
 
 **Made with ❤️ for AI learners everywhere**
@@ -330,116 +332,4 @@ Contributions are welcome!
 ## Contributing
 
 Contributions welcome! Please open an issue or submit a pull request.
-
-11. Git Ignore File (.gitignore)
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
-venv/
-ENV/
-env/
-.venv
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Environment variables
-.env
-.env.local
-
-# Data (except structure)
-data/*.json
-!data/.gitkeep
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Logs
-*.log
-
-12. Data Directory Placeholder (data/.gitkeep)
-Create an empty file to ensure the data directory exists in git:
-
-touch data/.gitkeep
-How to Setup Environment Variables in GitHub
-Detailed Step-by-Step Guide:
-Navigate to Your Repository
-
-Open your GitHub repository in a web browser
-
-Access Settings
-
-Click the Settings tab (requires admin access)​
-
-Go to Secrets Section
-
-In left sidebar: Secrets and variables → Actions​
-
-Add Repository Secrets
-
-Click New repository secret button​
-
-Add each secret:
-
-PERPLEXITY_API_KEY
-
-Name: PERPLEXITY_API_KEY
-
-Secret: Your Perplexity API key
-
-Click Add secret
-
-FROM_EMAIL
-
-Name: FROM_EMAIL
-
-Secret: youremail@gmail.com
-
-Click Add secret
-
-TO_EMAIL
-
-Name: TO_EMAIL
-
-Secret: Recipient email address
-
-Click Add secret
-
-APP_PASSWORD
-
-Name: APP_PASSWORD
-
-Secret: Your 16-character Gmail app password
-
-Click Add secret​
 
