@@ -3,15 +3,19 @@ AI Generator module for creating daily AI concepts.
 Handles communication with Perplexity API.
 """
 
+import re
+import time
 import requests
 from typing import List
+from requests.exceptions import RequestException, Timeout
 
 
 class AIConceptGenerator:
     """Class to generate AI concepts using Perplexity API"""
     
-    def __init__(self, api_key: str, api_url: str, model: str, 
-                 max_tokens: int = 2000, temperature: float = 0.7):
+    def __init__(self, api_key: str, api_url: str, model: str,
+                 max_tokens: int = 2000, temperature: float = 0.7,
+                 max_retries: int = 3, retry_delay: float = 5.0):
         """
         Initialize AI generator
         
@@ -27,6 +31,8 @@ class AIConceptGenerator:
         self.model = model
         self.max_tokens = max_tokens
         self.temperature = temperature
+        self.max_retries = max(1, max_retries)
+        self.retry_delay = max(0.0, retry_delay)
     
     def _create_prompt(self, previous_concepts: List[str]) -> str:
         """
@@ -89,23 +95,37 @@ Ensure all 5 concepts are DIFFERENT from the previously covered topics."""
             "temperature": self.temperature
         }
         
-        response = requests.post(
-            self.api_url,
-            headers=headers,
-            json=payload,
-            timeout=30
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            content = result.get("choices", [{}])[0].get("message", {}).get("content", "")
-            
-            if not content:
-                raise Exception("No content generated from API")
-            
-            return content
-        else:
-            raise Exception(f"API Error ({response.status_code}): {response.text}")
+        last_error = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                response = requests.post(
+                    self.api_url,
+                    headers=headers,
+                    json=payload,
+                    timeout=60
+                )
+
+                if response.status_code == 200:
+                    result = response.json()
+                    content = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+
+                    if not content:
+                        raise Exception("No content generated from API")
+
+                    return content
+                else:
+                    raise Exception(f"API Error ({response.status_code}): {response.text}")
+
+            except (Timeout, RequestException) as error:
+                last_error = error
+                if attempt < self.max_retries:
+                    wait_time = self.retry_delay * attempt
+                    print(f"⚠️ API request failed (attempt {attempt}/{self.max_retries}): {error}. Retrying in {wait_time} seconds...")
+                    time.sleep(wait_time)
+                else:
+                    break
+
+        raise Exception(f"Perplexity API request failed after {self.max_retries} attempts: {last_error}")
     
     @staticmethod
     def extract_concept_titles(content: str) -> List[str]:
@@ -121,6 +141,24 @@ Ensure all 5 concepts are DIFFERENT from the previously covered topics."""
         lines = content.split('\n')
         concepts = []
         
+        banned_titles = {
+            "definition",
+            "definitions",
+            "key points",
+            "key point",
+            "key takeaways",
+            "practical applications",
+            "practical application",
+            "applications",
+            "example",
+            "examples",
+            "use cases",
+            "overview",
+            "summary",
+            "conclusion",
+            "insights",
+        }
+
         for line in lines:
             line = line.strip()
             # Look for headings (lines starting with # or ** or numbered)
@@ -131,9 +169,12 @@ Ensure all 5 concepts are DIFFERENT from the previously covered topics."""
                                   .replace('*', '')
                                   .replace(':', '')
                                   .strip())
+                clean_title = re.sub(r'^\d+[\).\s-]*', '', clean_title).strip()
                 
                 # Filter reasonable titles
                 if 5 < len(clean_title) < 100 and not clean_title.startswith('-'):
+                    if clean_title.lower() in banned_titles:
+                        continue
                     concepts.append(clean_title)
         
         # Return first 5 unique concepts
