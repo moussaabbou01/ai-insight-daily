@@ -34,52 +34,136 @@ class EmailTemplate:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Insight Daily</title>
+    <style>
+        body {{
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1f2937;
+        }}
+        .wrapper {{
+            width: 100%;
+            background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+            padding: 40px 0;
+        }}
+        .container {{
+            width: 600px;
+            max-width: 90%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+        }}
+        .header {{
+            padding: 45px 35px 35px;
+            text-align: center;
+            background: radial-gradient(circle at top left, #a5b4fc, #4c1d95);
+            color: #ffffff;
+        }}
+        .header h1 {{
+            margin: 0 0 12px;
+            font-size: 30px;
+            letter-spacing: 0.6px;
+        }}
+        .header p {{
+            margin: 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+        }}
+        .date-bar {{
+            padding: 14px 35px;
+            background: #eef2ff;
+            border-bottom: 1px solid #c7d2fe;
+            text-align: center;
+            font-size: 14px;
+            color: #4338ca;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+        }}
+        .content {{
+            padding: 35px;
+            background: linear-gradient(180deg, rgba(249, 250, 251, 0.94) 0%, #ffffff 45%);
+        }}
+        .intro {{
+            margin: 0 0 28px;
+            font-size: 17px;
+            color: #334155;
+            line-height: 1.6;
+        }}
+        .concept-card {{
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(99, 102, 241, 0.18);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+        }}
+        .concept-card h3 {{
+            margin: 0 0 14px;
+            font-size: 20px;
+            color: #312e81;
+        }}
+        .concept-card p {{
+            margin: 12px 0;
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.6;
+        }}
+        .concept-card ul {{
+            margin: 10px 0 0 18px;
+            padding: 0;
+        }}
+        .concept-card li {{
+            margin: 6px 0;
+            color: #374151;
+            font-size: 15px;
+        }}
+        .concept-card strong {{
+            color: #1f2937;
+        }}
+        .footer {{
+            padding: 32px 28px 36px;
+            background: #0f172a;
+            text-align: center;
+            color: rgba(226, 232, 240, 0.85);
+            font-size: 13px;
+        }}
+        .footer p {{
+            margin: 6px 0;
+        }}
+        @media (max-width: 640px) {{
+            .content {{
+                padding: 24px;
+            }}
+            .concept-card {{
+                padding: 20px;
+            }}
+            .concept-card h3 {{
+                font-size: 18px;
+            }}
+        }}
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f4f4f4;">
-    <table role="presentation" style="width: 100%; border-collapse: collapse;">
-        <tr>
-            <td align="center" style="padding: 40px 0;">
-                <table role="presentation" style="width: 600px; max-width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
-                    
-                    <!-- Header -->
-                    <tr>
-                        <td style="padding: 40px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center;">
-                            <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">🤖 AI Insight Daily</h1>
-                            <p style="margin: 10px 0 0 0; color: #e0e7ff; font-size: 16px;">5 Concepts, 5 Minutes</p>
-                        </td>
-                    </tr>
-                    
-                    <!-- Date Bar -->
-                    <tr>
-                        <td style="padding: 20px 30px; background-color: #f8f9fa; border-bottom: 3px solid #667eea;">
-                            <p style="margin: 0; color: #6b7280; font-size: 14px; text-align: center;">📅 {date}</p>
-                        </td>
-                    </tr>
-                    
-                    <!-- Content -->
-                    <tr>
-                        <td style="padding: 40px 30px; color: #1f2937;">
-                            <p style="margin: 0 0 20px 0; color: #374151; font-size: 17px;">Hello AI Learner! 👋</p>
-                            <p style="margin: 0 0 30px 0; color: #6b7280; font-size: 15px;">Here are your 5 new AI concepts for today. Let's expand your knowledge!</p>
-                            
-                            <div style="line-height: 1.8;">
-                                {html_content}
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    <!-- Footer -->
-                    <tr>
-                        <td style="padding: 30px; background-color: #1f2937; text-align: center;">
-                            <p style="margin: 0 0 10px 0; color: #9ca3af; font-size: 14px;">Keep learning, keep growing! 🚀</p>
-                            <p style="margin: 0; color: #6b7280; font-size: 12px;">AI Insight Daily - Your Daily Dose of AI Knowledge</p>
-                        </td>
-                    </tr>
-                    
-                </table>
-            </td>
-        </tr>
-    </table>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">
+                <h1>🤖 AI Insight Daily</h1>
+                <p>5 Concepts, 5 Minutes • Curated for Moussaab Boutelis</p>
+            </div>
+            <div class="date-bar">📅 {date}</div>
+            <div class="content">
+                <p class="intro">Hello Moussaab! 👋 Welcome to your daily briefing. Here are the five freshest AI concepts curated to expand your knowledge today.</p>
+                {html_content}
+            </div>
+            <div class="footer">
+                <p>Stay curious, keep building! 🚀</p>
+                <p>AI Insight Daily • Moussaab Boutelis</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>"""
         
@@ -97,64 +181,71 @@ class EmailTemplate:
             Formatted HTML content
         """
         lines = content.split('\n')
-        html_lines = []
+        html_lines: list[str] = []
         in_list = False
-        
-        for line in lines:
-            line = line.strip()
-            
+        inside_card = False
+
+        def close_list():
+            nonlocal in_list
+            if in_list:
+                html_lines.append('</ul>')
+                in_list = False
+
+        def close_card():
+            nonlocal inside_card
+            if inside_card:
+                close_list()
+                html_lines.append('</div>')
+                inside_card = False
+
+        for raw_line in lines:
+            line = raw_line.strip()
+
             if not line:
-                if in_list:
-                    html_lines.append('</ul>')
-                    in_list = False
-                html_lines.append('<br>')
+                close_list()
                 continue
-            
-            # Headings
-            if line.startswith('###'):
-                if in_list:
-                    html_lines.append('</ul>')
-                    in_list = False
-                heading = line.replace('###', '').strip()
-                html_lines.append(f'<h3 style="color: #667eea; margin: 25px 0 15px 0; font-size: 20px;">{heading}</h3>')
-            elif line.startswith('##'):
-                if in_list:
-                    html_lines.append('</ul>')
-                    in_list = False
-                heading = line.replace('##', '').strip()
-                html_lines.append(f'<h2 style="color: #667eea; margin: 30px 0 15px 0; font-size: 22px;">{heading}</h2>')
-            elif line.startswith('#'):
-                if in_list:
-                    html_lines.append('</ul>')
-                    in_list = False
-                heading = line.replace('#', '').strip()
-                html_lines.append(f'<h2 style="color: #667eea; margin: 30px 0 15px 0; font-size: 22px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">{heading}</h2>')
-            # Bullet points
-            elif line.startswith('-') or line.startswith('•') or line.startswith('*'):
-                if not in_list:
-                    html_lines.append('<ul style="margin: 10px 0; padding-left: 20px;">')
-                    in_list = True
-                item = line[1:].strip()
-                html_lines.append(f'<li style="margin: 8px 0; color: #374151; font-size: 15px;">{item}</li>')
-            # Bold text
+
+            is_heading = False
+            heading_text = ''
+
+            if line.startswith('#'):
+                is_heading = True
+                heading_text = line.lstrip('#').strip()
             elif line.startswith('**') and line.endswith('**'):
-                if in_list:
-                    html_lines.append('</ul>')
-                    in_list = False
-                bold_text = line.replace('**', '').strip()
-                html_lines.append(f'<p style="margin: 15px 0; color: #1f2937; font-weight: 600; font-size: 16px;">{bold_text}</p>')
-            # Regular paragraph
-            else:
-                if in_list:
-                    html_lines.append('</ul>')
-                    in_list = False
-                # Handle inline bold (replace pairs of **)
-                formatted_line = line
-                while '**' in formatted_line:
-                    formatted_line = formatted_line.replace('**', '<strong>', 1).replace('**', '</strong>', 1)
-                html_lines.append(f'<p style="margin: 12px 0; color: #4b5563; font-size: 15px; line-height: 1.6;">{formatted_line}</p>')
-        
-        if in_list:
-            html_lines.append('</ul>')
-        
+                heading_text = line.strip('* ')
+                is_heading = len(heading_text.split()) <= 8
+            elif line[0].isdigit() if line else False:
+                is_heading = True
+                heading_text = line
+
+            if is_heading and heading_text:
+                close_card()
+                inside_card = True
+                html_lines.append('<div class="concept-card">')
+                html_lines.append(f'<h3>{heading_text}</h3>')
+                continue
+
+            if line.startswith(('-', '•', '*')):
+                if not inside_card:
+                    inside_card = True
+                    html_lines.append('<div class="concept-card">')
+                if not in_list:
+                    html_lines.append('<ul>')
+                    in_list = True
+                html_lines.append(f'<li>{line[1:].strip()}</li>')
+                continue
+
+            close_list()
+
+            if not inside_card:
+                inside_card = True
+                html_lines.append('<div class="concept-card">')
+
+            formatted_line = line
+            while '**' in formatted_line:
+                formatted_line = formatted_line.replace('**', '<strong>', 1).replace('**', '</strong>', 1)
+            html_lines.append(f'<p>{formatted_line}</p>')
+
+        close_card()
+
         return '\n'.join(html_lines)
